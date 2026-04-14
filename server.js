@@ -11,7 +11,7 @@ app.use(cors());
 app.use(express.json());
 
 // all routes
-app.use('/api/amravaan', routes);
+app.use('/api', routes);
 
 app.listen(port, '0.0.0.0', () => {
   console.log(`Server is running on port ${port}`);
