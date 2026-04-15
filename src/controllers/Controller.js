@@ -11,3 +11,14 @@ export const contactUs = async (req, res) => {
         return res.status(500).json({ message: 'Internal server error' });
     }
 }
+
+export const userFeedback = async (req, res) => {
+    try {
+        const { name, location, feedback, rating } = req.body;
+        await queryExecutor('INSERT INTO user_feedback (name, location, feedback, rating) VALUES (?, ?, ?, ?)', [name, location, feedback, rating]);
+        return res.status(201).json({ message: 'Thank you for your feedback.' });
+    } catch (error) {
+        console.error('[userFeedback > userFeedback]', error.message, error);
+        return res.status(500).json({ message: 'Internal server error' });
+    }
+}
